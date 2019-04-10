@@ -23,13 +23,13 @@ attr_accessor :stock
 
   def stock_reduced_after_purchase(drink_order)
     for drink in drink_order
-     if drink.name.to_sym == @stock[:glasses_of_wine]
-        @stock[:glasses_of_wine] -= 1
+     if drink.name == "Wine"
+       @stock[:glasses_of_wine] -= 1
      end
-     if drink.name.to_sym == @stock[:bottles_of_beer]
-        @stock[:bottles_of_beer] -= 1
+     if drink.name == "Beer"
+      @stock[:bottles_of_beer] -= 1
      end
-   end
+    end
   end
 
 

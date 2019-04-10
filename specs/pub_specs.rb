@@ -44,6 +44,9 @@ class PubTest < MiniTest::Test
     assert_equal(148,@pub1.stock[:glasses_of_wine])
   end
 
+  # def test_is_customer_too_drunk
+  #   assert_equal(true,@customer1.)
+  # end
 
 
 
