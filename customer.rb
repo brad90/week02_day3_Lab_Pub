@@ -17,8 +17,14 @@ attr_accessor :drunkeness, :wallet, :drink_order
   end
 
 
-  def asking_for_more_than_one_drink(drink_order_customer)
-    @drink_order + drink_order_customer
+  # def asking_for_more_than_one_drink
+  #   @drink_order + drink_order_customer
+  # end
+
+  def paying_for_more_drink
+    for drink in @drink_order
+      @wallet -= drink.price
+    end
   end
 
 
