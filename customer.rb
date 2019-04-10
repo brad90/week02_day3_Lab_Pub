@@ -1,14 +1,14 @@
 class Customer
 
 attr_reader :name, :age
-attr_accessor :drunkeness, :wallet, :drink_order
+attr_accessor :drunkenness, :wallet, :drink_order
 
 
   def initialize (name, wallet, age, drink_order = [])
     @name = name
     @wallet = wallet
     @age = age
-    @drunkeness = 0
+    @drunkenness = 0
     @drink_order = drink_order
   end
 
@@ -26,6 +26,42 @@ attr_accessor :drunkeness, :wallet, :drink_order
       @wallet -= drink.price
     end
   end
+
+  def giving_money_to_pub
+    for drink in @drink_order
+      drink_total = 0.0
+      drink_total += drink.price
+    end
+    return drink_total
+  end
+
+  def can_customer_afford_it
+    return true if @wallet >= 10.0
+    return false
+  end
+
+
+  def is_customer_old_enough
+    return true if @age >= 18
+    return false
+  end
+
+  def adding_units_to_customer
+    for drink in @drink_order
+      @drunkenness += drink.units_of_alcohol
+    end
+  end
+
+  def is_customer_drunk
+     if @drunkenness >= 2
+       return "You're barred!"
+     else
+       return "Buy more drink!"
+     end   
+  end
+
+
+
 
 
 

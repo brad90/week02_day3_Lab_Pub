@@ -41,6 +41,35 @@ class CustomerTest < MiniTest::Test
   end
 
 
+  def test_giving_money_to_pub
+    @customer1.giving_money_to_pub
+    assert_equal(10.0, @drink1.price + @drink2.price + @drink2.price)
+  end
+
+  def test_can_customer_afford_it__yes
+    @customer1.can_customer_afford_it
+    assert_equal(true, @customer1.wallet>=10.0)
+  end
+
+  def test_is_customer_old_enough
+    @customer1.is_customer_old_enough
+    assert_equal(true, @customer1.age>=18)
+  end
+
+  def test_is_customer_drunk
+    @customer1.is_customer_drunk
+    assert_equal("You're barred!", @customer1.drunkenness >=2)
+  end
+
+  def test_is_customer_drunk__false
+    @customer1.is_customer_drunk
+    assert_equal("Buy more drink!", @customer1.drunkenness >=2)
+  end
+
+  def test_adding_units_to_customer
+    @customer1.adding_units_to_customer
+    assert_equal(13.1,@customer1.drunkenness)
+  end
 
 
 
