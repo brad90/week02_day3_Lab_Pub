@@ -42,8 +42,8 @@ class CustomerTest < MiniTest::Test
 
 
   def test_giving_money_to_pub
-    @customer1.giving_money_to_pub
-    assert_equal(10.0, @drink1.price + @drink2.price + @drink2.price)
+    total_order_cost = @customer1.giving_money_to_pub
+    assert_equal(10.0, total_order_cost)
   end
 
   def test_can_customer_afford_it__yes
@@ -57,13 +57,14 @@ class CustomerTest < MiniTest::Test
   end
 
   def test_is_customer_drunk
-    @customer1.is_customer_drunk
-    assert_equal("You're barred!", @customer1.drunkenness >=2)
+    @customer1.adding_units_to_customer
+    drunk = @customer1.is_customer_drunk
+    assert_equal("You're barred!",drunk)
   end
 
   def test_is_customer_drunk__false
-    @customer1.is_customer_drunk
-    assert_equal("Buy more drink!", @customer1.drunkenness >=2)
+    drunk_false = @customer1.is_customer_drunk
+    assert_equal("Buy more drink!", drunk_false)
   end
 
   def test_adding_units_to_customer

@@ -28,8 +28,8 @@ attr_accessor :drunkenness, :wallet, :drink_order
   end
 
   def giving_money_to_pub
+    drink_total = 0.0
     for drink in @drink_order
-      drink_total = 0.0
       drink_total += drink.price
     end
     return drink_total
@@ -53,11 +53,11 @@ attr_accessor :drunkenness, :wallet, :drink_order
   end
 
   def is_customer_drunk
-     if @drunkenness >= 2
+     if @drunkenness >= 2.0
        return "You're barred!"
      else
        return "Buy more drink!"
-     end   
+     end
   end
 
 

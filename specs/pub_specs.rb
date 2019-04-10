@@ -2,6 +2,7 @@ require('minitest/autorun')
 require('minitest/rg')
 require_relative('../pub.rb')
 require_relative('../drink.rb')
+require_relative('../customer.rb')
 
 
 class PubTest < MiniTest::Test
@@ -9,7 +10,7 @@ class PubTest < MiniTest::Test
   def setup
     @drink1 = Drink.new("Beer", 4.00 , 3.1)
     @drink2 = Drink.new("Wine", 3.00 , 5.0)
-    @customer( )
+    @customer1 = Customer.new("Helen", 100.0, 35,[@drink1, @drink2, @drink2])
     @pub1 = Pub.new("The Royal Boozer", 100.0, [@drink1.name, @drink2.name])
   end
 
@@ -26,7 +27,21 @@ class PubTest < MiniTest::Test
   end
 
   def test_money_removed_from_customer_wallet
-    assert_equal(108, @pub1.till)
+    customer_pay = @customer1.giving_money_to_pub
+    @pub1.money_removed_from_customer_wallet(customer_pay)
+    assert_equal(110.0, @pub1.till)
+  end
+
+  def test_drink_stock_number
+    drink_stock = @pub1.stock[:glasses_of_wine]
+    @pub1.drink_in_stock_total(drink_stock)
+    assert_equal(150,drink_stock)
+  end
+
+  def test_stock_reduced_after_purchase
+    drink_order = @customer1.drink_order
+    @pub1.stock_reduced_after_purchase(drink_order)
+    assert_equal(148,@pub1.stock[:glasses_of_wine])
   end
 
 
