@@ -8,7 +8,8 @@ class CustomerTest < MiniTest::Test
 
   def setup
     @drink1 = Drink.new("Beer", 4.00, 3.1)
-    @customer1 = Customer.new("Helen", 100.0, 35)
+    @drink2 = Drink.new("Wine", 3.00 , 5.0)
+    @customer1 = Customer.new("Helen", 100.0, 35,["Beer", "Wine", "Wine"])
   end
 
   def test_customer_name
@@ -28,6 +29,18 @@ class CustomerTest < MiniTest::Test
     @customer1.paying_for_one_drink(@drink1.price)
     assert_equal(96.0, @customer1.wallet)
   end
+
+  def test_asking_for_more_than_one_drink
+    @customer1.asking_for_more_than_one_drink(@customer1.drink_order)
+    assert_equal(["Beer", "Wine", "Wine"], @customer1.drink_order)
+  end
+
+  # def test_paying_for_more_drinks
+  #   @customer1.paying_for_more_drink(@drink1.price)
+  #   assert_equal(88.0, @customer1.wallet)
+  # end
+
+
 
 
 
