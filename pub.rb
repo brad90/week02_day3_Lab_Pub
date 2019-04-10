@@ -12,4 +12,6 @@ attr_reader :name, :till, :drinks
 
 
 
+
+
 end

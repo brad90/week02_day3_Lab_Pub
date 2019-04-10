@@ -11,6 +11,10 @@ attr_accessor :drunkeness, :wallet
     @drunkeness = 0
   end
 
+  def paying_for_one_drink(drink_price)
+    @wallet -= drink_price
+  end
+
 
 
 end
